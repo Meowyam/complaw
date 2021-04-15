@@ -12,8 +12,10 @@ class ExifTool:
     Reference: https://stackoverflow.com/questions/10075115/call-exiftool-from-a-python-script
     '''
     sentinel = "{ready}\r\n" if os.name == 'nt' else "{ready}\n"
+    locateExif = shutil.which('exiftool')
 
-    def __init__(self, executable = '/usr/bin/exiftool', commands = ["-stay_open", "True",  "-@", "-"]):
+
+    def __init__(self, executable = locateExif, commands = ["-stay_open", "True",  "-@", "-"]):
         self.executable = executable
         self.commands = commands 
 
